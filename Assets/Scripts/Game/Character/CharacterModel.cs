@@ -1,6 +1,6 @@
 ﻿using Common;
 
-namespace Character
+namespace Game.Character
 {
     public class CharacterModel : IModel
     {

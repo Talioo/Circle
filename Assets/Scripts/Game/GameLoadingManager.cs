@@ -1,8 +1,7 @@
-﻿using Character;
+﻿using Game.Character;
 using Signals;
-using UnityEngine;
 using Zenject;
-using CharacterController = Character.CharacterController;
+using CharacterController = Game.Character.CharacterController;
 
 namespace Game
 {
@@ -15,17 +14,11 @@ namespace Game
             _signalBus = signalBus;
             
             InitCharacter();
-            InitBonuses();
         }
 
         private void InitCharacter()
         {
-            _signalBus.Fire(new ShowElementSignal { Type = typeof(CharacterController), Model = new CharacterModel()});
-        }
-
-        private void InitBonuses()
-        {
-            Debug.LogError("Not implemented yet");
+            _signalBus.Fire(new SpawnElementSignal { Type = typeof(CharacterController), Model = new CharacterModel()});
         }
     }
 }

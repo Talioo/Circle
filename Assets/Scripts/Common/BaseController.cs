@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Zenject;
 
 namespace Common
 {
@@ -6,21 +6,18 @@ namespace Common
         where TView : IView 
         where TModel : IModel
     {
+        protected SignalBus SignalBus { get; }
         protected TModel Model { get; private set; }
         protected TView View { get; private set; }
 
-        public BaseController(IView view, IModel model)
+        public BaseController(IView view, IModel model, SignalBus signalBus)
         {
             Model = (TModel)model;
             View = (TView)view;
+            SignalBus = signalBus;
         }
 
-        public void Show()
-        {
-            
-        }
-
-        public void Hide()
+        public virtual void OnSpawn()
         {
             
         }

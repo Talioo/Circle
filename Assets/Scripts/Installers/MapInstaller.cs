@@ -1,5 +1,7 @@
+using Common;
 using Common.Factories;
 using Game;
+using Game.BonusesSystem;
 using InputSystem;
 using UnityEngine;
 using Zenject;
@@ -19,9 +21,11 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<ViewsConfiguration>().AsSingle();
             Container.BindInterfacesAndSelfTo<ViewFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<ControllersFactory>().AsSingle();
-            Container.BindInterfacesAndSelfTo<ControllersManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ElementsFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BonusesPool>().AsSingle();
 
             Container.Bind<GameLoadingManager>().AsSingle().NonLazy();
+            Container.Bind<BonusesSystem>().AsSingle().NonLazy();
         }
     }
 }

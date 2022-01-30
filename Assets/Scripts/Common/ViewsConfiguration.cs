@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Character;
+using Game.BonusesSystem.Bonus;
+using Game.Character;
 
 namespace Common.Factories
 {
@@ -8,7 +9,8 @@ namespace Common.Factories
     {
         private readonly Dictionary<Type, string> _viewPath = new Dictionary<Type, string>()
         {
-            {typeof(CharacterController), "Character"}
+            {typeof(CharacterController), "Character"},
+            {typeof(BonusController), "BonusView"},
         };
 
         public Dictionary<Type, string> ViewPath => _viewPath;

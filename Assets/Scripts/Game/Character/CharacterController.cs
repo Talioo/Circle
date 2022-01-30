@@ -4,8 +4,9 @@ using Common;
 using DG.Tweening;
 using Map.InputSystem;
 using UnityEngine;
+using Zenject;
 
-namespace Character
+namespace Game.Character
 {
     public class CharacterController : BaseController<CharacterView, CharacterModel>, IDisposable
     {
@@ -16,8 +17,8 @@ namespace Character
         private int _pathPointer = 0;
         private Tween _moveTween;
 
-        public CharacterController(IView view, IModel model, IInputSystem inputSystem)
-            : base(view, model)
+        public CharacterController(IView view, IModel model, SignalBus signalBus, IInputSystem inputSystem)
+            : base(view, model, signalBus)
         {
             _inputSystem = inputSystem;
             Subscribe();

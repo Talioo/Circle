@@ -1,7 +1,7 @@
 ﻿using System;
 using Common;
 
-namespace Character
+namespace Game.Character
 {
     public class CharacterView : BaseView
     {

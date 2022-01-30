@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Map.InputSystem;
 using UnityEngine;
 using Zenject;
@@ -19,6 +20,7 @@ namespace InputSystem
             _mainCamera = mainCamera;
         }
 
+        public event Action PathStartedEvent;
         public IReadOnlyList<Vector3> Path => _path;
 
         public void Tick()
@@ -54,6 +56,7 @@ namespace InputSystem
 
             _lastPointTime = Time.time;
             _path.Add(ScreenToWorld(mousePosition));
+            PathStartedEvent?.Invoke();
         }
 
         private void TouchEnd(Vector3 mousePosition)

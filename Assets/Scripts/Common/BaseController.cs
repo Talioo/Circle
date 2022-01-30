@@ -1,4 +1,6 @@
-﻿namespace Common
+﻿using System;
+
+namespace Common
 {
     public class BaseController <TView, TModel> : IController
         where TView : IView 
@@ -11,6 +13,16 @@
         {
             Model = (TModel)model;
             View = (TView)view;
+        }
+
+        public void Show()
+        {
+            
+        }
+
+        public void Hide()
+        {
+            
         }
     }
 }

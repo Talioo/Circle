@@ -1,14 +1,17 @@
 ﻿using Signals;
 using Zenject;
 
-public class SignalsInstaller  : Installer<SignalsInstaller>
+namespace Installers
 {
-    public override void InstallBindings()
+    public class SignalsInstaller  : Installer<SignalsInstaller>
     {
-        SignalBusInstaller.Install(Container);
+        public override void InstallBindings()
+        {
+            SignalBusInstaller.Install(Container);
         
-        Container.DeclareSignal<ShowElementSignal>();
-        Container.DeclareSignal<HideFirstElementSignal>();
-        Container.DeclareSignal<ControllerWasHiddenSignal>();
+            Container.DeclareSignal<ShowElementSignal>();
+            Container.DeclareSignal<HideFirstElementSignal>();
+            Container.DeclareSignal<ControllerWasHiddenSignal>();
+        }
     }
 }

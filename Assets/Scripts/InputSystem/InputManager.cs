@@ -8,7 +8,7 @@ namespace InputSystem
 {
     public class InputManager : ITickable, IInputSystem
     {
-        private const float PointsPathTimeDelta = 0.1f;
+        private const float PointsPathTimeDelta = 0.01f;
 
         private readonly Camera _mainCamera;
         private readonly List<Vector3> _path = new List<Vector3>();

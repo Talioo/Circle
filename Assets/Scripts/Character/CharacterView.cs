@@ -1,10 +1,15 @@
-﻿using Common;
+﻿using System;
+using Common;
 
-namespace DefaultNamespace
+namespace Character
 {
     public class CharacterView : BaseView
     {
+        public event Action ClickEvent;
 
-
+        private void OnMouseDown()
+        {
+            ClickEvent?.Invoke();
+        }
     }
 }

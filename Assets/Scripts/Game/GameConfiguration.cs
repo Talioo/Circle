@@ -11,10 +11,15 @@ namespace Game
 
         [SerializeField]
         private float _bonusAppearanceTime = 2f;
+        [SerializeField]
+        private float _characterSpeed = 60f;
+        [SerializeField]
+        private float _maxBonusesCount = 2f;
 
         public BonusConfiguration BonusConfiguration => _bonusConfiguration;
-
         public float BonusAppearanceTime => _bonusAppearanceTime;
+        public float CharacterSpeed => _characterSpeed;
+        public float MaxBonusesCount => _maxBonusesCount;
     }
 
     [Serializable]

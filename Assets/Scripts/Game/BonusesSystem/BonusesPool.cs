@@ -11,16 +11,16 @@ namespace Game.BonusesSystem
 {
     public class BonusesPool : IBonusesPool, IDisposable
     {
-        private const int MaxBonusesCount = 6;
-        
         private readonly SignalBus _signalBus;
+        private readonly GameConfiguration _gameConfiguration;
         private readonly Queue<BonusController> _bonuses = new Queue<BonusController>();
 
         private int _spawnedBonusesCount = 0;
 
-        public BonusesPool(SignalBus signalBus)
+        public BonusesPool(SignalBus signalBus, GameConfiguration gameConfiguration)
         {
             _signalBus = signalBus;
+            _gameConfiguration = gameConfiguration;
 
             Subscribe();
         }
@@ -29,7 +29,7 @@ namespace Game.BonusesSystem
         {
             if (_bonuses.Count == 0)
             {
-                if (_spawnedBonusesCount <= MaxBonusesCount)
+                if (_spawnedBonusesCount <= _gameConfiguration.MaxBonusesCount)
                 {
                     await SpawnBonus(model, token);
                     if (token.IsCancellationRequested)

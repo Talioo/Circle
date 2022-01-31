@@ -20,7 +20,6 @@ namespace Game.BonusesSystem.Bonus
         public override void OnSpawn()
         {
             base.OnSpawn();
-            SignalBus.Fire(new BonusElementSpawnedSignal {Bonus = this});
             View.SpriteRenderer.color = Color.clear;
         }
 

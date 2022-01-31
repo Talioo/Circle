@@ -10,7 +10,7 @@ namespace Installers
             SignalBusInstaller.Install(Container);
         
             Container.DeclareSignal<SpawnElementSignal>();
-            Container.DeclareSignal<BonusElementSpawnedSignal>();
+            Container.DeclareSignal<ElementSpawnedSignal>();
             Container.DeclareSignal<BonusWasHiddenSignal>();
             Container.DeclareSignal<AddPointsSignal>();
         }

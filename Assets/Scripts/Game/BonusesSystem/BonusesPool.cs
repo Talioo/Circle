@@ -57,13 +57,13 @@ namespace Game.BonusesSystem
 
         public void Dispose()
         {
-            _signalBus.Unsubscribe<BonusElementSpawnedSignal>(OnBonusSpawned);
+            _signalBus.Unsubscribe<ElementSpawnedSignal>(OnBonusSpawned);
             _signalBus.Unsubscribe<BonusWasHiddenSignal>(OnBonusWasHidden);
         }
 
         private void Subscribe()
         {
-            _signalBus.Subscribe<BonusElementSpawnedSignal>(OnBonusSpawned);
+            _signalBus.Subscribe<ElementSpawnedSignal>(OnBonusSpawned);
             _signalBus.Subscribe<BonusWasHiddenSignal>(OnBonusWasHidden);
         }
 
@@ -83,10 +83,13 @@ namespace Game.BonusesSystem
             }
         }
 
-        private void OnBonusSpawned(BonusElementSpawnedSignal signal)
+        private void OnBonusSpawned(ElementSpawnedSignal signal)
         {
-            _bonuses.Enqueue(signal.Bonus);
-            _spawnedBonusesCount++;
+            if (signal.Controller is BonusController bonus)
+            {
+                _bonuses.Enqueue(bonus);
+                _spawnedBonusesCount++;
+            }
         }
 
         private void OnBonusWasHidden(BonusWasHiddenSignal signal)

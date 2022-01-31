@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using Signals;
+using Zenject;
 
 namespace Common
 {
@@ -19,7 +20,7 @@ namespace Common
 
         public virtual void OnSpawn()
         {
-            
+            SignalBus.Fire(new ElementSpawnedSignal {Controller = this});
         }
     }
 }

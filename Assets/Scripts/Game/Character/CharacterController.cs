@@ -24,6 +24,8 @@ namespace Game.Character
             Subscribe();
         }
 
+        public Vector3 CharacterPosition => View.transform.position;
+
         public void Dispose()
         {
             _inputSystem.PathStartedEvent -= StartMoving;

@@ -10,17 +10,20 @@ namespace Game.Character
 {
     public class CharacterController : BaseController<CharacterView, CharacterModel>, IDisposable
     {
-        private const float Speed = 60f;
-        
         private readonly IInputSystem _inputSystem;
+        private readonly GameConfiguration _gameConfiguration;
 
         private int _pathPointer = 0;
         private Tween _moveTween;
 
-        public CharacterController(IView view, IModel model, SignalBus signalBus, IInputSystem inputSystem)
+        public CharacterController(IView view, IModel model, SignalBus signalBus, 
+                                   IInputSystem inputSystem,
+                                   GameConfiguration gameConfiguration)
             : base(view, model, signalBus)
         {
             _inputSystem = inputSystem;
+            _gameConfiguration = gameConfiguration;
+            
             Subscribe();
         }
 
@@ -63,7 +66,8 @@ namespace Game.Character
                 var point = _inputSystem.Path[_pathPointer];
                 point.y = View.transform.position.y;
                 var distance = Vector3.Distance(point, View.transform.position);
-                _moveTween = View.transform.DOMove(point, distance/Speed).SetEase(Ease.Linear).OnComplete(Move);
+                _moveTween = View.transform.DOMove(point, distance/_gameConfiguration.CharacterSpeed)
+                                 .SetEase(Ease.Linear).OnComplete(Move);
                 _pathPointer++;
             }
             else
